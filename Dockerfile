@@ -1,17 +1,17 @@
-FROM ruby:2.7.0
-LABEL maintainer "Embras mefti <mefti@embras.net>"
+FROM ruby:2.6.6
+LABEL maintainer "Luis Henrique <lhff.dev@gmail.com>"
 
 EXPOSE 3000
 WORKDIR /app
 
-ARG _USER=home/mefti
+ARG _USER=home/lhffdev
 
 ENV TZ=Etc/UTC
 
 RUN apt-get update -qq && \
 	apt-get install -y libpq-dev nodejs build-essential locales tzdata && \
     ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone && \
-    adduser mefti && mkdir /.gems && chown -R mefti:mefti /.gems
+    adduser lhffdev && mkdir /.gems && chown -R lhffdev:lhffdev /.gems
 
 
 ENV LANG C.UTF-8
